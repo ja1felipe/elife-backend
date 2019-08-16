@@ -1,8 +1,9 @@
 const express = require('express')
 const News = require('../models/News')
 const router = express.Router()
+const authMiddleWare = require('../middlewares/auth')
 
-router.post('/register', async (req, res) => {
+router.post('/register', authMiddleWare, async (req, res) => {
     try{
         const news = await News.create(req.body)
         return res.send({ news })
