@@ -3,7 +3,7 @@ const News = require('../models/News')
 const router = express.Router()
 const authMiddleWare = require('../middlewares/auth')
 
-router.post('/register', authMiddleWare, async (req, res) => {
+router.post('/', authMiddleWare, async (req, res) => {
     try{
         const news = await News.create(req.body)
         return res.send({ news })
@@ -12,4 +12,4 @@ router.post('/register', authMiddleWare, async (req, res) => {
     }
 })
 
-module.exports = (app) => app.use('/controller', router)
+module.exports = (app) => app.use('/news', router)

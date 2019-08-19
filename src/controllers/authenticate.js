@@ -25,4 +25,4 @@ router.post('/auth', async (req,res) => {
     res.send({login, token})
 })
 
-module.exports = (app) => app.use('/controller', router)
+module.exports = (app) => app.use('/news', router)
