@@ -3,6 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const PORT = process.env.PORT
+const Password = require('./models/Password')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
@@ -25,4 +26,10 @@ require('./controllers/authenticate')(app)
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port: ${PORT}`)
+    Password.create({
+        admin : "admin",
+        password : "estaeasenha+"
+    }).then(
+        console.log("Success")
+    )
 })
