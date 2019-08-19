@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const authConfig = require('../config/auth.json')
+const secret = process.env.secret
 
 module.exports = (req, res, next) => {
     const authHeader = req.headers.authorization;
@@ -20,7 +20,7 @@ module.exports = (req, res, next) => {
         return res.status(401).send({error : 'Token error'})
     }
 
-    jwt.verify(token, authConfig.secret, (err, decoded) =>{
+    jwt.verify(token, secret, (err, decoded) =>{
         if(err) return res.status(401).send({error : 'Token invalid'})
 
         req.userId = decoded.id
