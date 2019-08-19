@@ -23,7 +23,7 @@ require('./controllers/newsEdit')(app)
 require('./controllers/newsDelete')(app)
 require('./controllers/authenticate')(app)
 
-app.listen(PORT || 3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log(`Server is listening on port: ${PORT}`)
     Password.create({
         admin : "admin",
