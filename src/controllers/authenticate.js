@@ -4,7 +4,7 @@ const router = express.Router()
 const Password = require('../models/Password')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const authConfig = require('../config/auth.json')
+const secret = process.env.secret
 
 router.post('/auth', async (req,res) => {
     const { admin } = req.body
@@ -18,7 +18,7 @@ router.post('/auth', async (req,res) => {
     }
     login.password = undefined
 
-    const token = jwt.sign({ id: login.id }, authConfig.secret, {
+    const token = jwt.sign({ id: login.id }, secret, {
         expiresIn: 86400
     })
 

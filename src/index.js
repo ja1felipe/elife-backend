@@ -1,6 +1,8 @@
+const dotenv = require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
+const PORT = process.env.PORT
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
@@ -21,6 +23,6 @@ require('./controllers/newsEdit')(app)
 require('./controllers/newsDelete')(app)
 require('./controllers/authenticate')(app)
 
-app.listen(3000, () => {
-    console.log('Server is listening on port: 3000')
+app.listen(PORT, () => {
+    console.log(`Server is listening on port: ${PORT}`)
 })

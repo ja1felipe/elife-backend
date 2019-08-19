@@ -15,6 +15,7 @@ router.get('/list/:theme', async (req,res) => {
 
 router.get('/list/:id', async (req,res) => {
     const item = await News.findById(req.params.id)
+    console.log(item)
     return res.send(item)
 })
 

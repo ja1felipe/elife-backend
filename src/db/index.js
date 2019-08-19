@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
-
-mongoose.connect('mongodb://localhost/elifebd', {useNewUrlParser : true, useFindAndModify : false})
+const MONGO_URL = process.env.MONGO_URL
+mongoose.connect(MONGO_URL, {useNewUrlParser : true, useFindAndModify : false}).then(
+    console.log("Database Connect")
+)
 
 mongoose.Promise = global.Promise
 
