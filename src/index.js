@@ -2,7 +2,6 @@ const dotenv = require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const PORT = process.env.PORT
 const Password = require('./models/Password')
 
 app.use(bodyParser.json())
@@ -24,7 +23,7 @@ require('./controllers/newsEdit')(app)
 require('./controllers/newsDelete')(app)
 require('./controllers/authenticate')(app)
 
-app.listen(PORT, () => {
+app.listen(PORT || 3000, () => {
     console.log(`Server is listening on port: ${PORT}`)
     Password.create({
         admin : "admin",
